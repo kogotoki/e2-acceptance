@@ -1,0 +1,37 @@
+{
+    "name": "bararai/e2-acceptance",
+    "description": "Acceptance tests for e2",
+    "minimum-stability": "stable",
+    "require": {
+        "e2/e2": "2.3"
+    },
+    "require-dev": {
+        "codeception/codeception": "~1.6.5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Bararai": ["src"]
+        }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "e2/e2",
+                "version": "2.3",
+                "dist": {
+                    "url": "http://blogengine.ru/download/e2_distr_v2741.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php"
+        ],
+        "post-update-cmd": [
+            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php"
+        ]
+    }
+}

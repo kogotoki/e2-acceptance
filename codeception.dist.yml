@@ -1,0 +1,20 @@
+paths:
+    tests: tests
+    log: tests/_log
+    data: tests/_data
+    helpers: tests/_helpers
+settings:
+    bootstrap: _bootstrap.php
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+modules:
+    config:
+        Db:
+            dsn: 'mysql:host=localhost;dbname=e2_acceptance'
+            user: 'e2_acceptance'
+            password: 'changeme'
+            dump: tests/_data/e2_empty.sql
+            populate: true
+            cleanup: true
