@@ -25,5 +25,5 @@ after_script:
   - cat vendor/e2/e2/user/settings.psa
 
 
-script: "vendor/bin/codecept run --debug --help"
+script: "vendor/bin/codecept run --debug -vvv"
 
