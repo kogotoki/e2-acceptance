@@ -26,5 +26,5 @@ curl -s http://getcomposer.org/installer | php
 php composer.phar install --no-interaction
 mysql -u root -e 'create database e2_acceptance;'
 ./run-server &
-vendor/bin/codecept run
+vendor/bin/codecept run --steps
 ```

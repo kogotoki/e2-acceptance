@@ -11,4 +11,4 @@ before_script:
   - "mysql -u root -e 'create database e2_acceptance;'"
   - ./run-server &
 
-script: "vendor/bin/codecept run"
+script: "vendor/bin/codecept run --steps"
