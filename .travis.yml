@@ -1,9 +1,7 @@
 language: php
 
 php:
-  - 5.3
   - 5.4
-  - 5.5
 
 before_install:
   - curl -s http://getcomposer.org/installer | php
@@ -14,11 +12,12 @@ install:
 before_script:
   - "mysql -e 'create database e2_acceptance;'"
   - "echo \"modules: {config: {Db: {user: 'travis', password: ''}}}\" > codeception.yml"
+  - php -i
   - ./run-server &
 
 after_failure:
   - cat ./tests/_log/WriteNotPublishPostCept.php.page.fail.html
-  -  cat ./vendor/e2/e2/user/settings.psa
+  - cat ./vendor/e2/e2/user/settings.psa
 
 after_script:
   - find .
