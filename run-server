@@ -1,3 +1,3 @@
 #!/bin/sh
 
-php -S localhost:4545 -t vendor/e2/e2/
+php -d short_open_tag=On -S localhost:4545 -t vendor/e2/e2/
