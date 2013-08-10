@@ -7,7 +7,7 @@ php:
 
 before_install:
   - curl -s http://getcomposer.org/installer | php
-    
+
 install:
   - php composer.phar install --no-interaction
 
@@ -17,12 +17,13 @@ before_script:
   - ./run-server &
 
 after_failure:
-  - cat tests/_log/*.fail.html
+  - sh -e 'cat tests/_log/*.fail.html'
 
 after_script:
+  - find .
   - cat codeception.yml
   - cat vendor/e2/e2/user/settings.psa
 
 
-script: "vendor/bin/codecept run"
+script: "vendor/bin/codecept run --debug --help"
 
