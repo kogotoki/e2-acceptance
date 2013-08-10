@@ -3,7 +3,7 @@ namespace Bararai\Tests\Acceptance\Page;
 
 use Bararai\Tests\Acceptance\Object\Post;
 
-class DraftsPage
+class DeletePostPage
 {
-    public static $url = '/?go=drafts/';
+    public static $deleteButton = "Delete";
 }

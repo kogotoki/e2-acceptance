@@ -2,6 +2,7 @@
 namespace Bararai\Tests\Acceptance\Cases;
 
 use Bararai\Tests\Acceptance\Controller\AdminController;
+use Bararai\Tests\Acceptance\Page\AnyPage;
 use Bararai\Tests\Acceptance\Page\HomePage;
 use Codeception\Scenario;
 
@@ -26,12 +27,12 @@ class AdminCase
         $I->lookForwardTo('see admin page');
 
         $I->amOnPage(HomePage::$url);
-        $I->dontSee('Sign out');
+        $I->dontSee(AnyPage::$signOutLink);
         $A->signIn();
         $I->seeCurrentUrlEquals(HomePage::$url);
-        $I->see('Sign out');
+        $I->see(AnyPage::$signOutLink);
         $A->signOut();
-        $I->seeCurrentUrlEquals('/');
-        $I->dontSee('Sign out');
+        $I->seeCurrentUrlEquals(HomePage::$url);
+        $I->dontSee(AnyPage::$signOutLink);
     }
 }

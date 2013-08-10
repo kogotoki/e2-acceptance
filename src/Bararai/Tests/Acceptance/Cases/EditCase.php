@@ -53,6 +53,24 @@ class EditCase
         $this->assertPostVisibleToGuests($post);
     }
 
+    public function testDeletePost()
+    {
+        $I = $this->webGuy;
+        $A = $this->admin;
+        $E = $this->editor;
+
+        $I->am('admin');
+        $I->wantTo('delete written post');
+
+        $A->signInOnHomePage();
+        $post = $E->createRandomPost();
+        $E->publishPost($post);
+        $E->deletePost($post);
+
+        $this->assertPostNotInDrafts($post);
+        $this->assertPostNotVisibleToGuests($post);
+    }
+
     private function assertPostInDrafts(Post $post)
     {
         $I = $this->webGuy;
@@ -86,5 +104,4 @@ class EditCase
         $I->amOnPage(HomePage::$url);
         $I->see($post->title);
     }
-
 }

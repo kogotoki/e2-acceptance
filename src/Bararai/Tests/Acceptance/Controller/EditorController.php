@@ -4,7 +4,12 @@ namespace Bararai\Tests\Acceptance\Controller;
 use Bararai\Tests\Acceptance\Object\Admin;
 use Bararai\Tests\Acceptance\Object\Post;
 use Bararai\Tests\Acceptance\Page\AnyPage;
+use Bararai\Tests\Acceptance\Page\DeletePostPage;
 use Bararai\Tests\Acceptance\Page\DraftsPage;
+use Bararai\Tests\Acceptance\Page\EditDraftPage;
+use Bararai\Tests\Acceptance\Page\EditPostPage;
+use Bararai\Tests\Acceptance\Page\NewPostPage;
+use Bararai\Tests\Acceptance\Page\PostPage;
 use Bararai\Tests\Acceptance\Page\SignInPage;
 
 class EditorController
@@ -27,22 +32,30 @@ class EditorController
     {
         $I = $this->webGuy;
 
-        $I->click('New');
-        $I->seeInCurrentUrl('new');
-        $I->see('New post', 'h2');
-
-        $I->fillField('title', $post->title);
-        $I->fillField('text', $post->text);
-        $I->click('Save and preview');
-        $post->id = $I->grabFromCurrentUrl(DraftsPage::$postIdRegex);
+        $I->click(AnyPage::$newPostLink);
+        $I->seeCurrentUrlEquals(NewPostPage::$url);
+        $I->fillField(NewPostPage::$titleField, $post->title);
+        $I->fillField(NewPostPage::$textField, $post->text);
+        $I->click(NewPostPage::$saveButton);
+        $post->id = $I->grabFromCurrentUrl(EditDraftPage::$postIdRegex);
     }
 
     public function publishPost(Post $post)
     {
         $I = $this->webGuy;
 
-        $I->amOnPage(DraftsPage::draftUrl($post));
-        $I->click('Publish the post');
+        $I->amOnPage(EditDraftPage::url($post));
+        $I->click(EditDraftPage::$publishButton);
+    }
+
+    public function deletePost($post)
+    {
+        $I = $this->webGuy;
+
+        $I->amOnPage(PostPage::url($post));
+        $I->click(PostPage::$editLink);
+        $I->click(EditPostPage::$deleteButton);
+        $I->click(DeletePostPage::$deleteButton);
     }
 }
 
