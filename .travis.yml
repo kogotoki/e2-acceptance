@@ -8,7 +8,8 @@ php:
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --no-interaction
-  - "mysql -u root -e 'create database e2_acceptance;'"
+  - "mysql -e 'create database e2_acceptance;'"
+  - echo "modules: {config: {Db: {user: 'travis', password: ''}}}" > codeception.yml
   - ./run-server &
 
-script: "vendor/bin/codecept run --steps"
+script: "vendor/bin/codecept run"

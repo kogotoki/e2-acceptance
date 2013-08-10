@@ -24,7 +24,9 @@ To start acceptance tests follow `.travis.yml`:
 ```bash
 curl -s http://getcomposer.org/installer | php
 php composer.phar install --no-interaction
-mysql -u root -e 'create database e2_acceptance;'
+mysql -u your_mysql_user -p -e 'create database e2_acceptance;'
+echo "modules: {config: {Db: {user: 'your_mysql_user', password: 'your_password'}}}" > codeception.yml
 ./run-server &
-vendor/bin/codecept run --steps
+
+vendor/bin/codecept run
 ```
