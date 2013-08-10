@@ -17,12 +17,12 @@ before_script:
   - ./run-server &
 
 after_failure:
-  - sh -e 'cat tests/_log/*.fail.html'
+  - cat ./tests/_log/./tests/_log/WriteNotPublishPostCept.php.page.fail.html
 
 after_script:
   - find .
-  - cat codeception.yml
-  - cat vendor/e2/e2/user/settings.psa
+  - cat ./codeception.yml
+  - cat ./vendor/e2/e2/user/settings.psa
 
 
 script: "vendor/bin/codecept run --debug -vvv"
