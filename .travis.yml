@@ -5,11 +5,24 @@ php:
   - 5.4
   - 5.5
 
-before_script:
+before_install:
   - curl -s http://getcomposer.org/installer | php
+    
+install:
   - php composer.phar install --no-interaction
+
+before_script:
   - "mysql -e 'create database e2_acceptance;'"
   - "echo \"modules: {config: {Db: {user: 'travis', password: ''}}}\" > codeception.yml"
   - ./run-server &
 
+after_failure:
+  - cat tests/_log/*.fail.html
+
+after_script:
+  - cat codeception.yml
+  - cat vendor/e2/e2/user/settings.psa
+
+
 script: "vendor/bin/codecept run"
+
