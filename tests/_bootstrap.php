@@ -12,5 +12,6 @@ $settingsHelper->setInstalled();
 echo file_get_contents($projectRoot.'/vendor/e2/e2/user/instance.psa');
 echo file_get_contents($projectRoot.'/vendor/e2/e2/user/settings.psa');
 echo file_get_contents($projectRoot.'/vendor/e2/e2/user/password-hash.psa');
+echo file_get_contents('http://localhost:4545/');
 
 unset($settingsHelper);
