@@ -7,7 +7,7 @@ Problem
 -------
 
 E2 engine is cool, but not open source. So lets create open source clone of e2 :-)
-And the first step is creating full acceptance test suite. Tests should covered
+And the first step is creating full acceptance test suite. Tests should cover
 e2 features as full as possible.
 
 Disclaimer
@@ -21,7 +21,7 @@ Install
 
 To start acceptance tests follow `.travis.yml`:
 
-```sh
+```bash
 curl -s http://getcomposer.org/installer | php
 php composer.phar install --no-interaction
 mysql -u root -e 'create database e2_acceptance;'
