@@ -17,7 +17,8 @@ before_script:
   - ./run-server &
 
 after_failure:
-  - cat ./tests/_log/./tests/_log/WriteNotPublishPostCept.php.page.fail.html
+  - cat ./tests/_log/WriteNotPublishPostCept.php.page.fail.html
+  -  cat ./vendor/e2/e2/user/settings.psa
 
 after_script:
   - find .
