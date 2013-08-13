@@ -28,10 +28,13 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php"
+            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php",
+            "cp resource/e2-patch/config.php vendor/e2/e2/user/config.php"
+
         ],
         "post-update-cmd": [
-            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php"
+            "cp resource/e2-patch/core.php vendor/e2/e2/system/core.php",
+            "cp resource/e2-patch/config.php vendor/e2/e2/user/config.php"
         ]
     }
 }
